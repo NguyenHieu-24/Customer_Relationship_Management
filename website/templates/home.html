@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+{% if user.is_authenticated %}
+
+<!-- hình ảnh động liên quan đến CRM -->
+<div class="text-center mb-4">
+  <img src="{% static 'images/information.gif' %}" alt="CRM Animation" class="img-fluid" style="max-height: 300px;">
+</div>
+<br/>
+
+<h1 class="text-center mb-4" style="font-weight: 800;">CUSTOMER RELATIONSHIP MANAGEMENT</h1>
+<br/>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+<div class="row"> 
+  <!-- Cột trái: Bảng dữ liệu -->
+  <div class="col-md-10">
+    <!-- thiết kế bảng để hiển thị các Records -->
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Zipcode</th>
+          <th scope="col">Created At</th>
+          <th scope="col">ID</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+        {% if records %}
+          {% for record in records %}
+            <tr>
+              <!-- định dạng thành từng cột bằng <td> và </td> -->
+              <td>{{ record.first_name }} {{ record.last_name }}</td>
+              <td>{{ record.email }}</td>
+              <td>{{ record.phone }}</td>
+              <td>{{ record.address }}</td>
+              <td>{{ record.city }}</td>
+              <td>{{ record.state }}</td>
+              <td>{{ record.zipcode }}</td>
+              <td>{{ record.created_at }}</td>
+              <!-- sử dụng Django url để truyền link cho ID -->
+              <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+            </tr>
+	        {% endfor %}
+
+        {% endif %}
+
+	
+	  </tbody>
+	</table>
+</div>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+<!-- Cột phải: Đồng hồ thời gian thực -->
+<div class="col-md-2 bg-light border-start overflow-auto" style="max-height: 600px;">
+  <h5 class="text-center mt-2">🌍World Clock</strong></h5>
+  <div id="world-clocks" class="px-2"></div>
+</div>
+</div>
+
+<br/>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+<!-- Hàng chứa 3 hình ảnh động GIF -->
+<div class="row mt-4">
+  <div class="col-md-4 text-center">
+    <img src="{% static 'images/Animation_computer.gif' %}" alt="Animation 1" class="img-fluid" style="max-height: 300px;">
+  </div>
+  <div class="col-md-4 text-center">
+    <img src="{% static 'images/Animation_server.gif' %}" alt="Animation 2" class="img-fluid" style="max-height: 300px;">
+  </div>
+  <div class="col-md-4 text-center">
+    <img src="{% static 'images/Animation_network.gif' %}" alt="Animation 3" class="img-fluid" style="max-height: 300px;">
+  </div>
+</div>
+
+<br/>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+<!-- Phần footer với thông tin -->
+<div class="mt-5 text-dark py-4" style="background-color: #f0f0f0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="fw-bold" style="color: #1C2526;">Django Project</h5>
+        <ul class="list-unstyled">
+          <li>Django-CRM is an open-source CRM solution designed with two primary goals:</li><br/>
+          <li>For users: Deliver enterprise-level open-source CRM software with a comprehensive suite of business solutions.</li><br/>
+          <li>For developers: Simplify the processes of development, customization, and production server support.</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold" style="color: #1C2526;">Members</h5>
+        <ul class="list-unstyled">
+          <li>ITDSIU21087 - Nguyễn Nguyên Hiệu</li>
+          <li>ITDSIU21114 - Nguyễn Ngọc Sang</li>
+          <li>ITDSIU21119 - Ngô Hoàng Thành</li>
+          <li>ITDSIU21085 - Lê Thị Hậu</li>
+          <li>ITDSIU21102 - Nguyễn Mai Anh Nam</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold" style="color: #1C2526;">School</h5>
+        <ul class="list-unstyled">
+          <li>Computer Science & Engineering</li>
+        </ul>
+        <h5 class="fw-bold" style="color: #1C2526;">Major</h5>
+        <ul class="list-unstyled">
+          <li>Data Science</li>
+        </ul>
+        <div class="d-flex align-items-center mt-3">
+          <h5 class="fw-bold mb-0" style="color: #1C2526; margin-right: 10px;">GitHub</h5>
+          <a href="https://github.com/NguyenHieu-24/Customer_Relationship_Management" target="_blank"
+             style="display: inline-flex; justify-content: center; align-items: center; width: 36px; height: 36px; border: 2px solid black; border-radius: 50%; text-decoration: none;">
+            <i class="bi bi-github" style="font-size: 1.2rem; color: black;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+<!-- Script hiển thị giờ các vùng -->
+<script>
+const cities = [
+  { name: "Hà Nội", offset: 7 },
+  { name: "Tokyo", offset: 9 },
+  { name: "New York", offset: -4 },
+  { name: "London", offset: 1 },
+  { name: "Paris", offset: 2 },
+  { name: "Sydney", offset: 10 },
+  { name: "Moscow", offset: 3 },
+  { name: "Dubai", offset: 4 },
+  { name: "Los Angeles", offset: -7 },
+  { name: "Beijing", offset: 8 },
+  { name: "Delhi", offset: 5.5 },
+  { name: "Berlin", offset: 2 },
+  { name: "Sao Paulo", offset: -3 },
+  { name: "Cape Town", offset: 2 },
+  { name: "Singapore", offset: 8 },
+  { name: "Jakarta", offset: 7 },
+  { name: "Seoul", offset: 9 },
+  { name: "Mexico City", offset: -5 },
+  { name: "Toronto", offset: -4 },
+  { name: "Bangkok", offset: 7 },
+  { name: "Istanbul", offset: 3 },
+  { name: "San Francisco", offset: -7 },
+  { name: "Cairo", offset: 2 },
+  { name: "Buenos Aires", offset: -3 }
+];
+
+function updateWorldClock() {
+  const container = document.getElementById("world-clocks");
+  container.innerHTML = "";
+
+  const now = new Date();
+
+  cities.forEach(city => {
+    const cityTime = new Date(now.getTime() + city.offset * 3600 * 1000);
+    const h = String(cityTime.getUTCHours()).padStart(2, '0');
+    const m = String(cityTime.getUTCMinutes()).padStart(2, '0');
+    const s = String(cityTime.getUTCSeconds()).padStart(2, '0');
+
+    container.innerHTML += `
+      <div class="d-flex justify-content-between border-bottom py-1">
+        <span>${city.name}</span>
+        <span>${h}:${m}:${s}</span>
+      </div>
+    `;
+  });
+}
+
+setInterval(updateWorldClock, 1000);
+updateWorldClock();
+</script>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+<h1>Login</h1>
+<br/>
+
+<form method="POST" action="{% url 'home' %}">
+	{% csrf_token %}
+
+  <div class="mb-3">
+    <input type="text" class="form-control" name="username", placeholder="Username" required>
+    
+  </div><br/>
+  <div class="mb-3">
+    <input type="password" class="form-control" name="password", placeholder="Password" required>
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-secondary">Login</button>
+
+  <!-- required: yêu cầu người dùng "Please fill out this field" khi phần Login bị trống -->
+
+</form>
+
+
+
+{% endif %}
+
+{% endblock %}
