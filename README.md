@@ -55,7 +55,7 @@ python manage.py runserver
 
 ## 📊 Demo
 
-📽️ [Watching video here: ]([https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://youtu.be/phdTLwybb84))
+📽️ [Watching video here:](https://www.youtube.com/watch?v=phdTLwybb84)
 
 ## 🧑‍💻 Authors
 
