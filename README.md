@@ -55,7 +55,7 @@ python manage.py runserver
 
 ## 📊 Demo
 
-<video src="Group6_Demo.mp4" controls width="600"></video>
+📽️ [Watching video here: ]([https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://youtu.be/phdTLwybb84))
 
 ## 🧑‍💻 Authors
 
