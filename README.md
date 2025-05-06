@@ -16,7 +16,7 @@ This **Customer Relationship Management (CRM)** project is designed to help busi
 
 - **Frontend**: HTML / Django Framework
 - **Backend**: Python 
-- **Database**: MySQL s
+- **Database**: MySQL 
 - **Other**: Clideo, Canva
 
 ## 🗂️ Project Structure
@@ -57,7 +57,7 @@ python manage.py runserver
 
 ## 📊 Demo
 
-📽️ [Watching video here](https://www.youtube.com/watch?v=phdTLwybb84)
+📽️ [Watching Video Here](https://www.youtube.com/watch?v=phdTLwybb84)
 
 ## 🧑‍💻 Authors
 
