@@ -21,6 +21,7 @@ This **Customer Relationship Management (CRM)** project is designed to help busi
 
 ## 🗂️ Project Structure
 
+```
 ISM_PROJECT_MAIN/
 ├── Django-CRM-main/Django-CRM-main
 │   ├── mydb.py
@@ -30,6 +31,7 @@ ISM_PROJECT_MAIN/
 │   └── dcrm/
 ├── virt/
 └── README.md
+```
 
 ## ⚙️ Implementation
 
