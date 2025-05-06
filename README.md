@@ -55,12 +55,12 @@ python manage.py runserver
 
 ## 📊 Demo
 
-
+<video src="Group6_Demo.mp4" controls width="600"></video>
 
 ## 🧑‍💻 Authors
 
-. Nguyễn Nguyên Hiệu - Backend Developer
-. Ngô Hoàng Thành - Backend Developer
-. Nguyễn Ngọc Sang - Frontend Developer
-. Lê Thị Hậu - Frontend Developer
-. Nguyễn Mai Anh Nam - Database Designer
+- Nguyễn Nguyên Hiệu - Backend Developer
+- Ngô Hoàng Thành - Backend Developer
+- Nguyễn Ngọc Sang - Frontend Developer
+- Lê Thị Hậu - Frontend Developer
+- Nguyễn Mai Anh Nam - Database Designer
